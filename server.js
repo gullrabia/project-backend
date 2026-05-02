@@ -12,7 +12,7 @@ app.use(clerkMiddleware());
 
 //  Fixed: correct param order, single braces
 app.get("/", (req, res) => {
-  res.send("server is live");
+  res.send("Server is live");
 });
 
 app.use("/api/inngest", serve({ client: inngest, functions }));
