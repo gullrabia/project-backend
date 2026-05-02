@@ -11,10 +11,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ Inngest FIRST (no auth here)
+// Inngest FIRST (no auth here)
 app.use("/api/inngest", serve({ client: inngest, functions }));
 
-// ✅ Apply Clerk to everything else
+//  Apply Clerk to everything else
 app.use((req, res, next) => {
   if (req.path.startsWith("/api/inngest")) return next();
   return clerkMiddleware()(req, res, next);
@@ -31,5 +31,5 @@ if (process.env.NODE_ENV !== "production") {
   app.listen(PORT, () => console.log(`server running on port: ${PORT}`));
 }
 
-// ✅ Vercel handler
+// Vercel handler
 export default app;
